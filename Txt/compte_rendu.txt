@@ -1,1 +1,4 @@
-
+1.
+6 variables pour 397 individus 
+3 variables qualitatives (rank, discipline, sex) et 3 quantitatives (yrs since phd, yrs service, salary)
+seulement 39 femmes (9.8%)
