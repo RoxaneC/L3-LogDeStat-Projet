@@ -8,7 +8,7 @@ data LogdeSta.table1;
 * Effectue une régression simple entre deux variables (arg1 = arg2)
 */
 %macro regressionsimple(arg1, arg2);
-proc GLM data = LogdeSta.tablechiffree;
+proc GLM data = LogdeSta.table1;
   class discipline rank sex;
   model &arg1 = &arg2;
 quit;
@@ -42,7 +42,7 @@ quit;
 %regressionsimple(salary, rank);
 %regressionsimple(salary, discipline);
 %regressionsimple(salary, YsincePhD);
-%regressionsimple(salary, Yservice);
+%regressionsimple(salary, YService);
 %regressionsimple(salary, sex);
 
 %regressionsimple(YsincePhD, rank);
@@ -53,9 +53,32 @@ quit;
 * régression multiple pour émetre des hypothèses de corrélation
 */
 %regression2(salary, rank, discipline);
-%regression2(salary, discipline, sex);
+%regression2(salary, sex, discipline);
 %regression2(salary, sex, rank);
 %regression2(salary, sex, YsincePhD);
 %regression2(salary, sex, YService);
+%regression2(salary, rank, YsincePhD);
+%regression2(salary, rank, YService);
 
-%regression3(salary, sex, discipline, YsincePhD);
+
+/* Quantification de la table */
+data LogdeSta.tablequant;
+  set LogdeSta.table1;
+  if sex='Female' then sexquant=0;
+  if sex='Male' then sexquant=1;
+  drop sex;
+  if discipline='A' then disciplinequant=98;
+  if discipline='B' then disciplinequant=99;
+  drop discipline;
+  if rank='Prof' then rankquant=52;
+  if rank='AssocPro' then rankquant=51;
+  if rank='AsstProf' then rankquant=50;
+  drop rank;
+
+proc corr data=logdesta.tablequant;
+quit;
+
+/* Observation sur la table quantifiée */
+proc gplot data=logdesta.tablequant;
+  plot salary*YService = rankquant;
+  plot salary*rankquant = sexquant;
