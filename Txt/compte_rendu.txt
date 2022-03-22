@@ -1,11 +1,28 @@
-1.
-6 variables pour 397 individus 
+1. DESCRIPTIVE
+6 variables pour 397 individus
+definitions variables qualitatives/quantitatives
 3 variables qualitatives (rank, discipline, sex) et 3 quantitatives (yrs since phd, yrs service, salary)
 seulement 39 femmes (9.8%)
 
 2.
-CAMEMBERT/MOYENNES
-Comparaison empirique/théorique
+definitions traitements univariés
+CAMEMBERT/MOYENNES (hors salaire)
+Comparaison loi empirique/théorique /!\
 
-3.
-comparaisons par rapport aux salaires
+3. HYPOTHÈSES
+comparaisons par rapport aux SALAIRES
+-> Calc/Excel
+
+4.
+définition modèles de régressions simples
+-> SAS
+analyses
+
+5.
+définition modèles de régressions multiples
+-> SAS
+analyses
+
+6.
+définition ACP et CAH
+-> R
