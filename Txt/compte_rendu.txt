@@ -15,6 +15,7 @@ comparaisons par rapport aux SALAIRES
 
 4.
 définition modèles de régressions simples
+idée
 -> SAS
 analyses
 
