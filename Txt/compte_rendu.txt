@@ -27,3 +27,26 @@ analyses
 6.
 définition ACP et CAH
 -> R
+
+
+
+
+/!\ PLAN
+Introduction
+- Objectifs/Hypothèses
+- Cheminement
+
+Statistique Descriptive
+- Variables
+- Analyse Globale (répartition/absurdités/moyennes/variances/lois théoriques)
+- Analyse Uni-variée : Salaire
+- Premières Conclusions (?)
+
+Régressions
+- Modèles Simples (comparaison/choix du modèle le plus adapté)
+- Modèles Multiples (comparaison/choix du modèle le plus adapté)
+- Conclusions
+
+Classification
+- ACP
+- CAH
