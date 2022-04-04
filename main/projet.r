@@ -6,8 +6,8 @@ salaires$sex <- as.numeric(factor(salaires$sex)) #female=1 et male=2
 salaires$rank <- as.numeric(factor(salaires$rank))                        
 salaires$discipline <- as.numeric(factor(salaires$discipline))                             
 
-c<-c()         
-for (i in 1:6){c<-c(c,var(salaires[,i]))} #variances
+v<-c()         
+for (i in 1:6){v<-c(v,var(salaires[,i]))} #variances
 
 #renormalisation des données
 salaires$rank <- (salaires$rank-mean(salaires$rank))/sd(salaires$rank)
@@ -21,8 +21,18 @@ correlation <- cor(salaires) #correlation
 
 a=svd(correlation)
 val_propres = unlist(a[1])
-vect_propres = matrix(unlist(a[2]),397,6) 
+vect_propres = matrix(unlist(a[3]),6,6) 
 
 qlte_rep <- c() #qualité de representation p/r à plusieurs axes
 for (i in 1:6){
-  qlte_rep = cumsum(val_propres)/6}
+  qlte_rep = cumsum(val_propres)/6} #3 axes nécessaires
+
+#Cercle des corrélations
+nom=c('r','d','yp','ys','sx','sl')
+plot(vect_propres[,1], vect_propres[,2], asp = 1, xlim = c(-1, 1),ylim=c(-1,1),type='n')
+text(vect_propres[,1], vect_propres[,2],nom)
+abline(v=0,h=0)
+symbols(0,0,circles=0.7, inches=F, add=T)
+symbols(0,0,circles=1, inches=F, add=T)
+
+#Représentation des variables
