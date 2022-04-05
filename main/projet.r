@@ -23,6 +23,13 @@ a=svd(correlation)
 val_propres = unlist(a[1])
 vect_propres = matrix(unlist(a[3]),6,6) 
 
+qlte_rep_par_var<-matrix(0,6,6)
+for (i in 1:6){
+  for (j in 1:6){
+    qlte_rep_par_var[i,j]<-(vect_propres[i,j])^2
+  }
+}
+
 qlte_rep <- c() #qualité de representation p/r à plusieurs axes
 for (i in 1:6){
   qlte_rep = cumsum(val_propres)/6} #3 axes nécessaires
