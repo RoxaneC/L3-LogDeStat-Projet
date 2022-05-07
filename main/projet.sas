@@ -5,7 +5,7 @@ data Projet.table1;
   input rank$ discipline$ YsincePhD YService sex$ salary;
 
 
-/* Correlation et Test de d'indépendance (Chi-2) */
+/* Correlation et Test de d'indépendance */
 
 proc corr data=projet.table1;
 quit;
@@ -23,7 +23,7 @@ proc freq data=projet.table1;
 quit;
 
 
-/* Similarité lois théoriques (Normale et Student) */
+/* Similarité lois théoriques */
 
 proc sort data=projet.table1;
   by salary;
@@ -110,6 +110,21 @@ quit;
 
 proc GLMSELECT data=Projet.table1;
   class discipline rank sex;
-  model salary = rank*sex*discipline rank*sex*YsincePhD sex discipline rank YsincePhD YService YsincePhD*discipline rank*discipline sex*rank sex*YsincePhD sex*YService rank*YService rank*YsincePhD;
+  model salary =  	sex discipline rank YsincePhD YService
+  					YsincePhD*discipline
+  					rank*discipline
+  					sex*rank
+  					sex*YsincePhD
+  					sex*YService
+  					sex*discipline
+  					rank*discipline
+  					rank*YService
+  					rank*YsincePhD
+  					YsincePhD*YService
+  					rank*sex*discipline 
+  					rank*sex*YsincePhD
+  					rank*sex*YService
+  					rank*YService*YsincePhD
+  					rank*discipline*YsincePhD
+  					rank*sex*discipline*YService*YsincePhD;
 quit;
-
